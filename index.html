@@ -776,6 +776,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 <script>
 /* ─── CONFIGURACIÓN ─── */
 const WA = "5491145603252";
+const carIdx = {}; // { productId: currentIndex }
 const WA_INTRO = "¡Hola! 👋 Vi la página web de *Manto* y ";
 
 const CAT = {
@@ -1044,9 +1045,8 @@ function closeThanksModal() {
   document.getElementById("thanks-modal").classList.remove("open");
 }
 
-document.getElementById("input-nombre").addEventListener("keydown", e => {
-  if (e.key === "Enter") sendToWhatsApp();
-});
+const _coNombre = document.getElementById("co-nombre");
+if (_coNombre) _coNombre.addEventListener("keydown", function(e) { if (e.key === "Enter") sendToWhatsApp(); });
 
 /* ─── NAVIGATION ─── */
 function showPage(id) {
@@ -1088,7 +1088,6 @@ function openSizeGuide()  { document.getElementById("size-guide-modal").classLis
 function closeSizeGuide() { document.getElementById("size-guide-modal").classList.remove("open"); }
 
 /* ─── CARRUSEL ─── */
-const carIdx = {}; // { productId: currentIndex }
 
 function carGo(pid, idx, total) {
   carIdx[pid] = ((idx % total) + total) % total;
