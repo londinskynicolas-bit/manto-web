@@ -72,7 +72,7 @@ body{background:#111;font-family:var(--fb);font-weight:300;color:var(--cream);mi
 .k-card-name{font-family:var(--ff);font-size:1rem;margin-bottom:.3rem;}
 .k-card-total{color:var(--accent);font-size:.82rem;margin-bottom:.4rem;}
 .k-card-meta{font-size:.68rem;color:var(--taupe);line-height:1.6;}
-.k-card-date{font-size:.62rem;color:rgba(184,168,152,.5);margin-top:.5rem;}
+.k-card-date{font-size:.62rem;color:rgba(184,168,152,.5);margin-top:.5rem;}.k-card-date strong{color:var(--accent-light);font-weight:500;}
 .k-card-actions{display:flex;gap:6px;margin-top:.8rem;flex-wrap:wrap;}
 .move-btn{padding:4px 8px;border:none;font-family:var(--fb);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:opacity .2s;}
 .move-btn:hover{opacity:.8;}
@@ -336,7 +336,7 @@ function renderKanban() {
         '<div class="k-card-total">' + fmt(p.total) + '</div>' +
         '<div class="k-card-meta">' + p.telefono + '<br>' + p.ciudad + '</div>' +
         '<div class="k-card-meta" style="margin-top:4px;font-size:.65rem;color:var(--warm-gray)">' + productos + '</div>' +
-        '<div class="k-card-date">' + fmtDate(p.created_at) + '</div>' +
+        '<div class="k-card-date">' + fmtDate(p.created_at) + ' &nbsp;·&nbsp; <strong>#' + String(p.numero_pedido||'—').padStart(3,'0') + '</strong></div>' +
         '<div class="k-card-actions">' + nextBtn + cancelBtn + '</div>' +
         '</div>';
     }).join("");
@@ -373,13 +373,14 @@ function openDetail(id) {
     '<button class="ds-btn' + (p.estado===e?' active':'') + '" style="background:' + COLORS[e] + ';color:#fff" onclick="moveEstado(\'' + p.id + '\',\'' + e + '\')">' + LABELS[e] + '</button>'
   ).join("");
 
-  document.getElementById("d-title").textContent = p.nombre + " " + p.apellido;
+  document.getElementById("d-title").textContent = '#' + String(p.numero_pedido||'—').padStart(3,'0') + ' — ' + p.nombre + ' ' + p.apellido;
   document.getElementById("d-content").innerHTML =
     '<div class="dg">' +
       '<div class="df"><label>Email</label><p>' + p.email + '</p></div>' +
       '<div class="df"><label>Teléfono</label><p>' + p.telefono + '</p></div>' +
       '<div class="df" style="grid-column:1/-1"><label>Dirección</label><p>' + p.direccion + ', ' + p.ciudad + '</p></div>' +
-      '<div class="df"><label>Fecha</label><p>' + fmtDate(p.created_at) + '</p></div>' +
+      '<div class="df"><label>Nro. Pedido</label><p>#' + String(p.numero_pedido||'—').padStart(3,'0') + '</p></div>' +
+    '<div class="df"><label>Fecha</label><p>' + fmtDate(p.created_at) + '</p></div>' +
     '</div>' +
     '<div class="dp-title">Productos</div>' + prods +
     '<div class="d-total">Total: ' + fmt(p.total) + '</div>' +
