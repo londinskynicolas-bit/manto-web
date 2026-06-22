@@ -1002,45 +1002,34 @@ async function sendToWhatsApp() {
   if (!direccion) { showToast("Ingresá tu dirección");        document.getElementById("co-direccion").focus(); return; }
   if (!ciudad)    { showToast("Ingresá tu ciudad/localidad"); document.getElementById("co-ciudad").focus();    return; }
 
-  const nombreCompleto = `${nombre} ${apellido}`;
-  const items = cart.map(i => `  • ${i.qty}× ${i.name}${i.color ? ` — Color: ${i.color}` : ""} — ${fmt(i.price * i.qty)}`).join("
-");
+  const nombreCompleto = nombre + " " + apellido;
+  const itemLines = cart.map(function(i) {
+    return "  - " + i.qty + "x " + i.name + (i.color ? " (" + i.color + ")" : "") + " - " + fmt(i.price * i.qty);
+  }).join(" | ");
   const total = cartTotal();
 
-  // Guardar en Supabase
   try {
-    const productos = cart.map(i => ({ id: i.id, nombre: i.name, qty: i.qty, color: i.color || null, precio_unit: i.price, subtotal: i.price * i.qty }));
-    await fetch(`${SUPA_URL}/rest/v1/pedidos_manto`, {
-      method: "POST",
-      headers: { "apikey": SUPA_KEY, "Authorization": `Bearer ${SUPA_KEY}`, "Content-Type": "application/json", "Prefer": "return=minimal" },
-      body: JSON.stringify({ nombre, apellido, email, telefono, direccion, ciudad, productos, total, estado: "recibido" })
+    const productos = cart.map(function(i) {
+      return { id: i.id, nombre: i.name, qty: i.qty, color: i.color || null, precio_unit: i.price, subtotal: i.price * i.qty };
     });
-    console.log("✅ Pedido guardado en Supabase");
+    await fetch(SUPA_URL + "/rest/v1/pedidos_manto", {
+      method: "POST",
+      headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+      body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, telefono: telefono, direccion: direccion, ciudad: ciudad, productos: productos, total: total, estado: "recibido" })
+    });
   } catch(e) { console.error("Supabase error:", e); }
 
-  const msg = encodeURIComponent(
-    `¡Hola! 👋 Soy *${nombreCompleto}* y acabo de realizar un pedido en la página de *Manto*.
+  const ln = "\n";
+  const waText = "Hola! Soy " + nombreCompleto + " y acabo de realizar un pedido en Manto." + ln + ln +
+    "Detalle: " + itemLines + ln + ln +
+    "Total: " + fmt(total) + ln +
+    "Envio a: " + direccion + ", " + ciudad + ln +
+    "Email: " + email + ln +
+    "Tel: " + telefono + ln + ln +
+    "Quedo a la espera. Muchas gracias!";
 
-` +
-    `🛒 *Detalle del pedido:*
-${items}
-
-` +
-    `💰 *Total: ${fmt(total)}*
-
-` +
-    `📍 *Dirección de envío:* ${direccion}, ${ciudad}
-` +
-    `📧 *Email:* ${email}
-` +
-    `📱 *Teléfono:* ${telefono}
-
-` +
-    `Quedo a la espera de la confirmación. ¡Muchas gracias! 😊`
-  );
-
-  window.open(`https://wa.me/${WA}?text=${msg}`, "_blank");
-  saveOrderToHistory(nombreCompleto, items, total);
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(waText), "_blank");
+  saveOrderToHistory(nombreCompleto, itemLines, total);
   closeNameModal();
   closeCart();
   cart = [];
