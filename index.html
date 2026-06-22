@@ -321,7 +321,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 .m-summary{background:var(--beige);padding:.85rem 1rem;margin-bottom:1.4rem;font-size:.75rem;line-height:1.9;color:var(--charcoal);}
 .m-summary strong{color:var(--dark);font-weight:500;display:block;margin-bottom:.3rem;}
 .m-summary .m-total{margin-top:.5rem;font-family:var(--fb);font-size:1rem;color:var(--dark);font-variant-numeric:lining-nums;}
-.m-input{width:100%;padding:13px 14px;border:1px solid var(--sand);background:var(--cream);font-family:var(--fb);font-size:.85rem;color:var(--dark);outline:none;transition:border-color .2s;margin-bottom:1.2rem;}
+.m-input{width:100%;padding:13px 14px;border:1px solid var(--sand);background:var(--cream);font-family:var(--fb);font-size:.85rem;color:var(--dark);outline:none;transition:border-color .2s;margin-bottom:10px;}
 .m-input:focus{border-color:var(--accent);}
 .m-input::placeholder{color:var(--taupe);}
 .m-send{width:100%;padding:15px;background:#25D366;color:#fff;border:none;font-family:var(--fb);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .3s;}
@@ -597,7 +597,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.4 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.34 1h3a2 2 0 012 1.72 12.77 12.77 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.4a16 16 0 006.29 6.29l.77-.77a2 2 0 012.11-.45 12.77 12.77 0 002.81.7A2 2 0 0122 16.92z"/></svg>
       <span>Coordiná el envío: <a href="https://wa.me/5491145603252?text=%C2%A1Hola%21%20Vi%20sus%20productos%20en%20la%20p%C3%A1gina%20de%20Manto%20y%20me%20gustar%C3%ADa%20coordinar%20el%20env%C3%ADo%20de%20mi%20pedido.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank">escribinos por WhatsApp</a></span>
     </p>
-    <p id="size-guide-trigger" class="size-guide-trigger" onclick="openSizeGuide()">
+    <p id="size-guide-trigger" class="size-guide-trigger" onclick="openSizeGuide()" style="display:none">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       <span>¿No sabés qué tamaño elegir? — <strong>Guía de tamaños</strong></span>
     </p>
@@ -686,9 +686,9 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
     <h3>Confirmar Pedido</h3>
     <p class="m-sub">Completá tus datos para finalizar la compra. Todos los campos son obligatorios.</p>
     <div class="m-summary" id="modal-summary"></div>
-    <div style="display:flex;gap:12px;">
-      <input class="m-input" type="text" id="co-nombre" placeholder="Nombre *">
-      <input class="m-input" type="text" id="co-apellido" placeholder="Apellido *">
+    <div style="display:flex;gap:12px;margin-bottom:10px;">
+      <input class="m-input" type="text" id="co-nombre" placeholder="Nombre *" style="margin-bottom:0">
+      <input class="m-input" type="text" id="co-apellido" placeholder="Apellido *" style="margin-bottom:0">
     </div>
     <input class="m-input" type="email" id="co-email" placeholder="Email *">
     <input class="m-input" type="tel" id="co-telefono" placeholder="Teléfono / WhatsApp *">
@@ -1405,9 +1405,9 @@ function closeOrdersModal() {
    2. Habilitá las líneas comentadas abajo
    3. Cambiá el botón de WhatsApp por el de MP si querés usarlo como primario
 ───────────────────────────────────────────────────── */
-const MP_ACCESS_TOKEN = null;
 const SUPA_URL = "https://jorsmrrsizmfveqqerdp.supabase.co";
-const SUPA_KEY = "sb_publishable_-2Pysr0B8tGMbuvivfl2dw_vjcUbghx"; // ← Pegá tu Access Token de MP acá cuando lo tengas
+const SUPA_KEY = "sb_publishable_-2Pysr0B8tGMbuvivfl2dw_vjcUbghx";
+const MP_ACCESS_TOKEN = null; // ← Activar cuando tengas cuenta MP con CUIT
 
 async function checkoutMercadoPago() {
   if (!MP_ACCESS_TOKEN) {
