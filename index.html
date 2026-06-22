@@ -3,7 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manto</title>
+<title>Manto — Alfombras y Mesas Ratonas</title>
+
+<!-- SEO básico -->
+<meta name="description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país. Consultá por stock, medidas y precios.">
+<meta name="keywords" content="alfombras, mesas ratonas, deco, hogar, diseño, alfombras online, alfombras Argentina">
+<meta name="author" content="Manto">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manto-deco.netlify.app/">
+<meta property="og:title" content="Manto — Alfombras y Mesas Ratonas">
+<meta property="og:description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país. Consultá por stock, medidas y precios.">
+<meta property="og:image" content="https://manto-deco.netlify.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Manto — Alfombras y Mesas Ratonas">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Manto">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manto — Alfombras y Mesas Ratonas">
+<meta name="twitter:description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país.">
+<meta name="twitter:image" content="https://manto-deco.netlify.app/og-image.jpg">
+
+<!-- Favicon (usando el logo) -->
+<link rel="icon" type="image/jpeg" href="https://manto-deco.netlify.app/favicon.jpg">
+<link rel="apple-touch-icon" href="https://manto-deco.netlify.app/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -393,7 +421,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 
 <!-- ══ NAV ══ -->
 <nav>
-  <span class="nav-logo" onclick="goHome()">M<span>a</span>nto</span>
+  <span class="nav-logo" onclick="goHome()" style="display:flex;align-items:center;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEDElEQVR4nO2Wz09cVRTHv+fcN28YZgrWgKGt8vilI+OUiZ0ChhgpMS500bhw4kYTN12Y9H94sjBxZ3TTuHBl4qYujKu6Ipg0qBSbdqi0zYQfQ1t+FYYpD+bnu8cFQyVotBOeNCbvk9zkvXfPOz/uPefeA/j4+Pj4+Pj4+HgB1wbZAKdSUABob672zk/NOw+hfxc5WmUEQIZOd0RL0OGCW3gQpnCCmJp+Tc9dTiZPNNKOGVUB7iKhuz+nZ9N7/3hg+/BbOjw8rABAs/pUQX2pyqZhaNxmppHXEl1Xyo7qdrVeYehZML4fSHSPAEAKUIe1DXiYk65IAcR305n79yZm5heKZXwugjdR4HvX7yw+mLi5cF00bpHgfQCyOjzsSSp5FgCBWEQ0dtODTNaNIsjl96YBBkETQXtlE/AwAEWMQEDx2JitxsZs1dAUYkPxXpoIAC0eFzAAGF4p2irsUGGnUBwZGa3WPm3EXzyJfH77sQz9B0EcOoBz54DxceCt1/u320+1Jd8YiF+EJsour74w8ds0mIP47NK3u8IEQ4ASAHIcx5NADq1ExGaiUb149Zv3Kq4+k8s7hoBUwFDlZ441OsTFS+1DFzYAYDDR/TUgvb/cmB0SESKiQx+lHqTQJwKMIru4fJuYs42RUIXIpWJR6/nN+41aRco1QRJNNrP+YrDP+jhhtV0BsIDd+vDkTjgyYrHWiFf3QN3UDJNd63tQ64FEQLZts23bnEqllIhQKpVS9r7+CADVeqL97Nfzv8Gz1a+niAkAJePtb5e2i4uhcOPL+UeFyXDIjKtgYO7azdnp9vaWE62RUDcrxZPp+Z8GXulIlKqV4xBdMQPByOSt+R+TvdY7GhLPL299NZvLPXr1pVOnq6yNBlKRjpl7Vy8DGnXURL3bJgz+YL2oMkSwmo4Fz7AK3GCRCwCQzT5cL5f1PIEuAiAoSppmYHBbh6+R4g8BkDI4zMQ0m8s5/XHrXWWqPjO8lCY2Ohb6Oj8CIH+TZt4FANDy0tLSDrGxxIa5VVhr2BBBqaenJ5iMtZ8vFgsCojwAgWCLwSuZTKYkWm8CgIiuArQNwGVSQwbMxakpVLQy0gSOAsDq6pP3SXUXjkCCAEjEDcLVAdXmBITIjcBpMpQ6r5i1dt2mZNfx5t1l1CYAgMiwLCsoIitKSWfs+aZnBfKDwD3bH2ttk2qlt1rV3wHA+Pj4E/dLdV9kMau17feFtZWEZTUXGxy37876zky8s2V6em4lEbU6UCxCB4wqVxynEjarSoUC6XQ21x+z2nSoZX1qaqpyNnoyuunqjUxmea2vr+s5dkrNblg9TKezuXr9edocXEDPm71/MkoHnoE/z/SD46BzjL/qORLnfXx8fHx8fHx8fHwe8weqQIuuu8B6mgAAAABJRU5ErkJggg==" alt="Manto" style="height:36px;width:auto;"></span>
   <ul class="nav-links">
     <li><a onclick="goHome()">Inicio</a></li>
     <li><a onclick="goToProducts()">Productos</a></li>
