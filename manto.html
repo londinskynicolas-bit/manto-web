@@ -3,7 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manto</title>
+<title>Manto — Alfombras y Mesas Ratonas</title>
+
+<!-- SEO básico -->
+<meta name="description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país. Consultá por stock, medidas y precios.">
+<meta name="keywords" content="alfombras, mesas ratonas, deco, hogar, diseño, alfombras online, alfombras Argentina">
+<meta name="author" content="Manto">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manto-deco.netlify.app/"><!-- Actualizar cuando tengas dominio propio -->
+<meta property="og:title" content="Manto — Alfombras y Mesas Ratonas">
+<meta property="og:description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país. Consultá por stock, medidas y precios.">
+<meta property="og:image" content="https://manto-deco.netlify.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Manto — Alfombras y Mesas Ratonas">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Manto">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manto — Alfombras y Mesas Ratonas">
+<meta name="twitter:description" content="Alfombras y mesas ratonas de diseño para transformar tu hogar. Envíos a todo el país.">
+<meta name="twitter:image" content="https://manto-deco.netlify.app/og-image.jpg">
+
+<!-- Favicon (usando el logo) -->
+<link rel="icon" type="image/jpeg" href="https://manto-deco.netlify.app/favicon.jpg">
+<link rel="apple-touch-icon" href="https://manto-deco.netlify.app/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -321,7 +349,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 .m-summary{background:var(--beige);padding:.85rem 1rem;margin-bottom:1.4rem;font-size:.75rem;line-height:1.9;color:var(--charcoal);}
 .m-summary strong{color:var(--dark);font-weight:500;display:block;margin-bottom:.3rem;}
 .m-summary .m-total{margin-top:.5rem;font-family:var(--fb);font-size:1rem;color:var(--dark);font-variant-numeric:lining-nums;}
-.m-input{width:100%;padding:13px 14px;border:1px solid var(--sand);background:var(--cream);font-family:var(--fb);font-size:.85rem;color:var(--dark);outline:none;transition:border-color .2s;margin-bottom:1.2rem;}
+.m-input{width:100%;padding:13px 14px;border:1px solid var(--sand);background:var(--cream);font-family:var(--fb);font-size:.85rem;color:var(--dark);outline:none;transition:border-color .2s;margin-bottom:10px;}
 .m-input:focus{border-color:var(--accent);}
 .m-input::placeholder{color:var(--taupe);}
 .m-send{width:100%;padding:15px;background:#25D366;color:#fff;border:none;font-family:var(--fb);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .3s;}
@@ -348,6 +376,23 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 /* ── TOAST ── */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--dark);color:var(--cream);padding:11px 26px;font-size:.76rem;letter-spacing:.1em;opacity:0;pointer-events:none;transition:all .3s;z-index:400;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem;}
+.lightbox.open{display:flex;}
+.lb-img{max-width:92vw;max-height:88vh;object-fit:contain;display:block;border-radius:2px;user-select:none;}
+.lb-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s;z-index:10;}
+.lb-close:hover{opacity:1;}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.6rem;transition:background .2s;border-radius:2px;}
+.lb-arrow:hover{background:rgba(255,255,255,.25);}
+.lb-prev{left:1rem;}.lb-next{right:1rem;}
+.lb-arrow.hidden{display:none;}
+.lb-dots{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);display:flex;gap:7px;}
+.lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s;}
+.lb-dot.active{background:#fff;}
+.lb-counter{position:absolute;top:1.4rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-family:var(--fb);font-size:.72rem;letter-spacing:.12em;}
+.lb-zoom-hint{position:absolute;bottom:3.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.35);font-size:.68rem;letter-spacing:.1em;white-space:nowrap;}
 
 /* ── SCROLL REVEAL ── */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1);}
@@ -376,7 +421,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 
 <!-- ══ NAV ══ -->
 <nav>
-  <span class="nav-logo" onclick="goHome()">M<span>a</span>nto</span>
+  <span class="nav-logo" onclick="goHome()" style="display:flex;align-items:center;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEDElEQVR4nO2Wz09cVRTHv+fcN28YZgrWgKGt8vilI+OUiZ0ChhgpMS500bhw4kYTN12Y9H94sjBxZ3TTuHBl4qYujKu6Ipg0qBSbdqi0zYQfQ1t+FYYpD+bnu8cFQyVotBOeNCbvk9zkvXfPOz/uPefeA/j4+Pj4+Pj4+HgB1wbZAKdSUABob672zk/NOw+hfxc5WmUEQIZOd0RL0OGCW3gQpnCCmJp+Tc9dTiZPNNKOGVUB7iKhuz+nZ9N7/3hg+/BbOjw8rABAs/pUQX2pyqZhaNxmppHXEl1Xyo7qdrVeYehZML4fSHSPAEAKUIe1DXiYk65IAcR305n79yZm5heKZXwugjdR4HvX7yw+mLi5cF00bpHgfQCyOjzsSSp5FgCBWEQ0dtODTNaNIsjl96YBBkETQXtlE/AwAEWMQEDx2JitxsZs1dAUYkPxXpoIAC0eFzAAGF4p2irsUGGnUBwZGa3WPm3EXzyJfH77sQz9B0EcOoBz54DxceCt1/u320+1Jd8YiF+EJsour74w8ds0mIP47NK3u8IEQ4ASAHIcx5NADq1ExGaiUb149Zv3Kq4+k8s7hoBUwFDlZ441OsTFS+1DFzYAYDDR/TUgvb/cmB0SESKiQx+lHqTQJwKMIru4fJuYs42RUIXIpWJR6/nN+41aRco1QRJNNrP+YrDP+jhhtV0BsIDd+vDkTjgyYrHWiFf3QN3UDJNd63tQ64FEQLZts23bnEqllIhQKpVS9r7+CADVeqL97Nfzv8Gz1a+niAkAJePtb5e2i4uhcOPL+UeFyXDIjKtgYO7azdnp9vaWE62RUDcrxZPp+Z8GXulIlKqV4xBdMQPByOSt+R+TvdY7GhLPL299NZvLPXr1pVOnq6yNBlKRjpl7Vy8DGnXURL3bJgz+YL2oMkSwmo4Fz7AK3GCRCwCQzT5cL5f1PIEuAiAoSppmYHBbh6+R4g8BkDI4zMQ0m8s5/XHrXWWqPjO8lCY2Ohb6Oj8CIH+TZt4FANDy0tLSDrGxxIa5VVhr2BBBqaenJ5iMtZ8vFgsCojwAgWCLwSuZTKYkWm8CgIiuArQNwGVSQwbMxakpVLQy0gSOAsDq6pP3SXUXjkCCAEjEDcLVAdXmBITIjcBpMpQ6r5i1dt2mZNfx5t1l1CYAgMiwLCsoIitKSWfs+aZnBfKDwD3bH2ttk2qlt1rV3wHA+Pj4E/dLdV9kMau17feFtZWEZTUXGxy37876zky8s2V6em4lEbU6UCxCB4wqVxynEjarSoUC6XQ21x+z2nSoZX1qaqpyNnoyuunqjUxmea2vr+s5dkrNblg9TKezuXr9edocXEDPm71/MkoHnoE/z/SD46BzjL/qORLnfXx8fHx8fHx8fHwe8weqQIuuu8B6mgAAAABJRU5ErkJggg==" alt="Manto" style="height:36px;width:auto;"></span>
   <ul class="nav-links">
     <li><a onclick="goHome()">Inicio</a></li>
     <li><a onclick="goToProducts()">Productos</a></li>
@@ -510,9 +555,9 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
     <p class="sec-sub" style="color:var(--taupe)">Escribinos y te asesoramos sin compromiso</p>
     <div class="c-wrap">
       <p>Consultanos por stock, disponibilidad y medidas. Hacemos envíos a todo el país — el costo de envío no está incluido y se coordina con el comprador por WhatsApp.</p>
-      <span class="c-num">+54 9 11 4560-3252</span>
+      <span class="c-num" id="contact-num">+54 9 11 4560-3252</span>
       <a class="wa-cta" href="https://wa.me/5491145603252?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20sus%20productos.%20%C2%BFPodr%C3%ADan%20ayudarme%3F" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.16-.35.22-.64.07-1.26-.46-2.39-1.48c-.88-.79-1.48-1.76-1.65-2.06s-.02-.46.13-.6.3-.35.45-.52.2-.3.3-.5.05-.37-.03-.52-.67-1.61-.92-2.21c-.24-.58-.49-.5-.67-.51s-.37-.01-.57-.01-.52.07-.79.37-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07 2.1 3.2 5.08 4.49c.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41s.25-1.29.17-1.41-.27-.2-.57-.35zm-5.42 7.4h-.004a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.005c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></svg>
         Escribinos por WhatsApp
       </a>
 
@@ -597,7 +642,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.4 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.34 1h3a2 2 0 012 1.72 12.77 12.77 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.4a16 16 0 006.29 6.29l.77-.77a2 2 0 012.11-.45 12.77 12.77 0 002.81.7A2 2 0 0122 16.92z"/></svg>
       <span>Coordiná el envío: <a href="https://wa.me/5491145603252?text=%C2%A1Hola%21%20Vi%20sus%20productos%20en%20la%20p%C3%A1gina%20de%20Manto%20y%20me%20gustar%C3%ADa%20coordinar%20el%20env%C3%ADo%20de%20mi%20pedido.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank">escribinos por WhatsApp</a></span>
     </p>
-    <p id="size-guide-trigger" class="size-guide-trigger" onclick="openSizeGuide()">
+    <p id="size-guide-trigger" class="size-guide-trigger" onclick="openSizeGuide()" style="display:none">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       <span>¿No sabés qué tamaño elegir? — <strong>Guía de tamaños</strong></span>
     </p>
@@ -666,7 +711,7 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
       <span class="c-total-amount" id="cart-total">$0</span>
     </div>
     <button class="c-checkout" id="btn-checkout" onclick="openNameModal()" disabled>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.16-.35.22-.64.07-1.26-.46-2.39-1.48c-.88-.79-1.48-1.76-1.65-2.06s-.02-.46.13-.6.3-.35.45-.52.2-.3.3-.5.05-.37-.03-.52-.67-1.61-.92-2.21c-.24-.58-.49-.5-.67-.51s-.37-.01-.57-.01-.52.07-.79.37-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07 2.1 3.2 5.08 4.49c.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41s.25-1.29.17-1.41-.27-.2-.57-.35zm-5.42 7.4h-.004a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.005c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></svg>
       Finalizar pedido por WhatsApp
     </button>
     <button class="c-checkout c-checkout-mp" id="btn-mp" onclick="checkoutMercadoPago()" disabled title="Disponible próximamente">
@@ -681,15 +726,22 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
      MODAL: INGRESAR NOMBRE
 ══════════════════════════════ -->
 <div class="m-overlay" id="name-modal">
-  <div class="m-box">
+  <div class="m-box" style="max-width:520px;">
     <button class="m-close" onclick="closeNameModal()">✕</button>
     <h3>Confirmar Pedido</h3>
-    <p class="m-sub">Ingresá tu nombre para armar el mensaje y enviártelo por WhatsApp. Nosotros te confirmamos el pedido y coordinamos el envío.</p>
+    <p class="m-sub">Completá tus datos para finalizar la compra. Todos los campos son obligatorios.</p>
     <div class="m-summary" id="modal-summary"></div>
-    <input class="m-input" type="text" id="input-nombre" placeholder="Tu nombre y apellido *" maxlength="60">
+    <div style="display:flex;gap:12px;margin-bottom:10px;">
+      <input class="m-input" type="text" id="co-nombre" placeholder="Nombre *" style="margin-bottom:0">
+      <input class="m-input" type="text" id="co-apellido" placeholder="Apellido *" style="margin-bottom:0">
+    </div>
+    <input class="m-input" type="email" id="co-email" placeholder="Email *">
+    <input class="m-input" type="tel" id="co-telefono" placeholder="Teléfono / WhatsApp *">
+    <input class="m-input" type="text" id="co-direccion" placeholder="Dirección (calle, número, depto) *">
+    <input class="m-input" type="text" id="co-ciudad" placeholder="Ciudad / Localidad / Provincia *" style="margin-bottom:14px;">
     <button class="m-send" onclick="sendToWhatsApp()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Enviar pedido por WhatsApp
+      <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.494 2.027 7.807L0 32l8.407-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.28 22.27c-.344.969-2.012 1.851-2.754 1.965-.712.108-1.608.153-2.593-.163--.598-.192-1.365-.448-2.35-.879-4.137-1.786-6.836-5.975-7.04-6.25-.205-.274-1.661-2.208-1.661-4.21 0-2.003 1.05-2.988 1.422-3.397.372-.41.812-.512 1.083-.512.27 0 .541.003.778.014.25.012.584-.095.914.697.343.826 1.165 2.84 1.267 3.047.103.206.171.446.034.719-.137.274-.206.444-.41.684-.205.24-.43.537-.615.72-.205.205-.418.428-.18.839.24.41 1.065 1.757 2.287 2.846 1.571 1.4 2.895 1.833 3.305 2.038.41.206.65.171.889-.103.24-.274 1.028-1.2 1.302-1.61.273-.41.547-.342.921-.205.375.137 2.388 1.126 2.798 1.332.41.205.683.308.786.479.103.171.103.99-.24 1.96z"/></svg>
+      Confirmar y enviar pedido
     </button>
   </div>
 </div>
@@ -758,8 +810,20 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
 ══════════════════════════════ -->
 <a class="float-wa" id="float-wa" href="https://wa.me/5491145603252?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Vi%20la%20p%C3%A1gina%20web%20de%20Manto%20y%20quiero%20hacer%20una%20consulta.%20%C2%BFPodr%C3%ADan%20ayudarme%3F" target="_blank" aria-label="Escribinos por WhatsApp">
   <span class="float-wa-ring"></span>
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.16-.35.22-.64.07-1.26-.46-2.39-1.48c-.88-.79-1.48-1.76-1.65-2.06s-.02-.46.13-.6.3-.35.45-.52.2-.3.3-.5.05-.37-.03-.52-.67-1.61-.92-2.21c-.24-.58-.49-.5-.67-.51s-.37-.01-.57-.01-.52.07-.79.37-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07 2.1 3.2 5.08 4.49c.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41s.25-1.29.17-1.41-.27-.2-.57-.35zm-5.42 7.4h-.004a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.005c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></svg>
 </a>
+
+<!-- ══════════════════════════════
+     LIGHTBOX
+══════════════════════════════ -->
+<div class="lightbox" id="lightbox" onclick="lbClickOutside(event)">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-arrow lb-prev" id="lb-prev" onclick="lbMove(-1)">&#8249;</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-arrow lb-next" id="lb-next" onclick="lbMove(1)">&#8250;</button>
+  <div class="lb-dots" id="lb-dots"></div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -767,9 +831,23 @@ footer strong{font-family:var(--ff);color:var(--cream);font-size:1.1rem;font-wei
      SCRIPT
 ══════════════════════════════ -->
 <script>
-/* ─── CONFIGURACIÓN ─── */
-const WA = "5491145603252";
-const WA_INTRO = "¡Hola! 👋 Vi la página web de *Manto* y ";
+/* ═══════════════════════════════════════════════
+   CONFIGURACIÓN GLOBAL — editá solo acá
+   ═══════════════════════════════════════════════ */
+const CONFIG = {
+  whatsapp:    "5491145603252",           // número sin + ni espacios
+  instagram:   "manto.deco",              // @ sin el @
+  email:       "hola@manto.com.ar",       // mail de contacto
+  sitioUrl:    "https://manto-deco.netlify.app",
+  nombreMarca: "Manto",
+  supaUrl:     "https://jorsmrrsizmfveqqerdp.supabase.co",
+  supaKey:     "sb_publishable_-2Pysr0B8tGMbuvivfl2dw_vjcUbghx",
+  mpToken:     null,                      // ← Pegá tu Access Token de MP cuando lo tengas
+};
+/* Alias cortos para el resto del código */
+const WA = CONFIG.whatsapp;
+const WA_INTRO = "¡Hola! 👋 Vi la página web de *" + CONFIG.nombreMarca + "* y ";
+const carIdx = {};
 
 const CAT = {
   alfombras: "Alfombras",
@@ -970,7 +1048,9 @@ function openNameModal() {
   const total = cartTotal();
   document.getElementById("modal-summary").innerHTML =
     `<strong>Resumen de tu pedido:</strong><br>${lines}<div class="m-total">Total: ${fmt(total)}</div>`;
-  document.getElementById("input-nombre").value = "";
+  ["co-nombre","co-apellido","co-email","co-telefono","co-direccion","co-ciudad"].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = "";
+  });
   document.getElementById("name-modal").classList.add("open");
 }
 function closeNameModal() {
@@ -978,28 +1058,53 @@ function closeNameModal() {
 }
 
 /* ─── ENVIAR A WHATSAPP ─── */
-function sendToWhatsApp() {
-  const nombre = document.getElementById("input-nombre").value.trim();
-  if (!nombre) {
-    showToast("Por favor ingresá tu nombre");
-    document.getElementById("input-nombre").focus();
-    return;
-  }
+async function sendToWhatsApp() {
+  const nombre    = (document.getElementById("co-nombre")?.value    || "").trim();
+  const apellido  = (document.getElementById("co-apellido")?.value  || "").trim();
+  const email     = (document.getElementById("co-email")?.value     || "").trim();
+  const telefono  = (document.getElementById("co-telefono")?.value  || "").trim();
+  const direccion = (document.getElementById("co-direccion")?.value || "").trim();
+  const ciudad    = (document.getElementById("co-ciudad")?.value    || "").trim();
 
-  const items = cart.map(i => `  • ${i.qty}× ${i.name}${i.color ? ` — Color: ${i.color}` : ""} — ${fmt(i.price * i.qty)}`).join("\n");
+  if (!nombre)    { showToast("Ingresá tu nombre");           document.getElementById("co-nombre").focus();    return; }
+  if (!apellido)  { showToast("Ingresá tu apellido");         document.getElementById("co-apellido").focus();  return; }
+  if (!email || !email.includes("@")) { showToast("Ingresá un email válido"); document.getElementById("co-email").focus(); return; }
+  if (!telefono)  { showToast("Ingresá tu teléfono");         document.getElementById("co-telefono").focus();  return; }
+  if (!direccion) { showToast("Ingresá tu dirección");        document.getElementById("co-direccion").focus(); return; }
+  if (!ciudad)    { showToast("Ingresá tu ciudad/localidad"); document.getElementById("co-ciudad").focus();    return; }
+
+  const nombreCompleto = nombre + " " + apellido;
+  const itemLines = cart.map(function(i) {
+    return "  - " + i.qty + "x " + i.name + (i.color ? " (" + i.color + ")" : "") + " - " + fmt(i.price * i.qty);
+  }).join(" | ");
   const total = cartTotal();
 
-  const msg = encodeURIComponent(
-    `¡Hola! 👋 Soy *${nombre}* y acabo de armar mi pedido en la página de *Manto*.\n\n` +
-    `🛒 *Detalle del pedido:*\n${items}\n\n` +
-    `💰 *Total: ${fmt(total)}*\n\n` +
-    `Me gustaría confirmar la compra y coordinar el envío. ¿Cómo seguimos? ¡Muchas gracias! 😊`
-  );
+  let numPedido = null;
+  try {
+    const productos = cart.map(function(i) {
+      return { id: i.id, nombre: i.name, qty: i.qty, color: i.color || null, precio_unit: i.price, subtotal: i.price * i.qty };
+    });
+    const supaRes = await fetch(SUPA_URL + "/rest/v1/pedidos_manto", {
+      method: "POST",
+      headers: { "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY, "Content-Type": "application/json", "Prefer": "return=representation" },
+      body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, telefono: telefono, direccion: direccion, ciudad: ciudad, productos: productos, total: total, estado: "recibido" })
+    });
+    const supaData = await supaRes.json();
+    numPedido = supaData[0]?.numero_pedido || null;
+  } catch(e) { console.error("Supabase error:", e); }
 
-  window.open(`https://wa.me/${WA}?text=${msg}`, "_blank");
+  const ln = "\n";
+  const numStr = numPedido ? " (Pedido #" + String(numPedido).padStart(3,"0") + ")" : "";
+  const waText = "Hola! Soy " + nombreCompleto + " y acabo de realizar un pedido en Manto" + numStr + "." + ln + ln +
+    "Detalle: " + itemLines + ln + ln +
+    "Total: " + fmt(total) + ln +
+    "Envio a: " + direccion + ", " + ciudad + ln +
+    "Email: " + email + ln +
+    "Tel: " + telefono + ln + ln +
+    "Quedo a la espera. Muchas gracias!";
 
-  saveOrderToHistory(nombre, items, total);
-
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(waText), "_blank");
+  saveOrderToHistory(nombreCompleto, itemLines, total);
   closeNameModal();
   closeCart();
   cart = [];
@@ -1014,9 +1119,8 @@ function closeThanksModal() {
   document.getElementById("thanks-modal").classList.remove("open");
 }
 
-document.getElementById("input-nombre").addEventListener("keydown", e => {
-  if (e.key === "Enter") sendToWhatsApp();
-});
+const _coNombre = document.getElementById("co-nombre");
+if (_coNombre) _coNombre.addEventListener("keydown", function(e) { if (e.key === "Enter") sendToWhatsApp(); });
 
 /* ─── NAVIGATION ─── */
 function showPage(id) {
@@ -1058,7 +1162,6 @@ function openSizeGuide()  { document.getElementById("size-guide-modal").classLis
 function closeSizeGuide() { document.getElementById("size-guide-modal").classList.remove("open"); }
 
 /* ─── CARRUSEL ─── */
-const carIdx = {}; // { productId: currentIndex }
 
 function carGo(pid, idx, total) {
   carIdx[pid] = ((idx % total) + total) % total;
@@ -1133,7 +1236,7 @@ function renderProducts(cat) {
 
     grid.innerHTML += `
       <div class="p-card reveal" style="transition-delay:${(idx % 3) * 90}ms">
-        <div class="p-img" id="carousel-${p.id}">${imgHTML}
+        <div class="p-img" id="carousel-${p.id}" style="cursor:${n>0?'zoom-in':'default'}" onclick="if(event.target.closest('.quick-add,.car-arrow,.car-dot')){return;}openLightbox('${p.id}',carIdx['${p.id}']||0)">${imgHTML}
           <button type="button" class="quick-add" id="qa-${p.id}" onclick="addToCart('${p.id}')" title="Agregar al carrito" aria-label="Agregar al carrito">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           </button>
@@ -1151,7 +1254,7 @@ function renderProducts(cat) {
         <button id="atc-${p.id}" class="atc ${!hasPrice ? 'wa' : ''}" onclick="addToCart('${p.id}')">
           ${hasPrice
             ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Agregar al carrito`
-            : `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Consultar precio por WhatsApp`}
+            : `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.16-.35.22-.64.07-1.26-.46-2.39-1.48c-.88-.79-1.48-1.76-1.65-2.06s-.02-.46.13-.6.3-.35.45-.52.2-.3.3-.5.05-.37-.03-.52-.67-1.61-.92-2.21c-.24-.58-.49-.5-.67-.51s-.37-.01-.57-.01-.52.07-.79.37-1.04 1.02-1.04 2.48 1.07 2.88 1.21 3.07 2.1 3.2 5.08 4.49c.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41s.25-1.29.17-1.41-.27-.2-.57-.35zm-5.42 7.4h-.004a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 012.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.005c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></svg> Consultar precio por WhatsApp`}
         </button>
       </div>`;
 
@@ -1364,7 +1467,9 @@ function closeOrdersModal() {
    2. Habilitá las líneas comentadas abajo
    3. Cambiá el botón de WhatsApp por el de MP si querés usarlo como primario
 ───────────────────────────────────────────────────── */
-const MP_ACCESS_TOKEN = null; // ← Pegá tu Access Token de MP acá cuando lo tengas
+const SUPA_URL        = CONFIG.supaUrl;
+const SUPA_KEY        = CONFIG.supaKey;
+const MP_ACCESS_TOKEN = CONFIG.mpToken;
 
 async function checkoutMercadoPago() {
   if (!MP_ACCESS_TOKEN) {
@@ -1408,10 +1513,104 @@ async function checkoutMercadoPago() {
   }
 }
 
+
+/* ─── LIGHTBOX ─── */
+let lbImgs = [];
+let lbIdx  = 0;
+
+function openLightbox(productId, startIdx) {
+  const p = findProduct(productId);
+  if (!p || !p.imgs || !p.imgs.length) return;
+  lbImgs = p.imgs;
+  lbIdx  = startIdx || 0;
+  lbRender();
+  document.getElementById("lightbox").classList.add("open");
+  document.body.style.overflow = "hidden";
+  // swipe support
+  lbTouchX = null;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function lbClickOutside(e) {
+  if (e.target.id === "lightbox") closeLightbox();
+}
+
+function lbMove(dir) {
+  lbIdx = ((lbIdx + dir) + lbImgs.length) % lbImgs.length;
+  lbRender();
+}
+
+function lbGoTo(idx) {
+  lbIdx = idx;
+  lbRender();
+}
+
+function lbRender() {
+  const n = lbImgs.length;
+  document.getElementById("lb-img").src = lbImgs[lbIdx];
+  document.getElementById("lb-prev").classList.toggle("hidden", n <= 1);
+  document.getElementById("lb-next").classList.toggle("hidden", n <= 1);
+  document.getElementById("lb-counter").textContent = n > 1 ? (lbIdx + 1) + " / " + n : "";
+  const dots = document.getElementById("lb-dots");
+  dots.innerHTML = n > 1 ? lbImgs.map(function(_,i) {
+    return '<div class="lb-dot' + (i===lbIdx?' active':'') + '" onclick="lbGoTo(' + i + ')"></div>';
+  }).join("") : "";
+}
+
+// Teclado
+document.addEventListener("keydown", function(e) {
+  if (!document.getElementById("lightbox").classList.contains("open")) return;
+  if (e.key === "ArrowRight") lbMove(1);
+  if (e.key === "ArrowLeft")  lbMove(-1);
+  if (e.key === "Escape")     closeLightbox();
+});
+
+// Touch swipe en lightbox
+let lbTouchX = null;
+document.getElementById("lightbox").addEventListener("touchstart", function(e) {
+  lbTouchX = e.touches[0].clientX;
+}, { passive: true });
+document.getElementById("lightbox").addEventListener("touchend", function(e) {
+  if (lbTouchX === null) return;
+  const dx = e.changedTouches[0].clientX - lbTouchX;
+  if (Math.abs(dx) > 40) lbMove(dx < 0 ? 1 : -1);
+  lbTouchX = null;
+}, { passive: true });
+
+
+
+/* ─── WA LINKS DINÁMICOS ─── */
+function buildWALink(msg) {
+  return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
+}
+function initWALinks() {
+  // Actualiza todos los links de WA en el HTML con el número de CONFIG
+  document.querySelectorAll("a[href*='wa.me/']").forEach(function(a) {
+    const url = new URL(a.href);
+    const text = url.searchParams.get("text") || "";
+    a.href = buildWALink(text);
+  });
+  // Actualiza float-wa
+  const floatWa = document.getElementById("float-wa");
+  if (floatWa) floatWa.href = buildWALink("¡Hola! 👋 Vi la página web de " + CONFIG.nombreMarca + " y quiero hacer una consulta. ¿Podrían ayudarme?");
+  // Actualiza instagram links
+  document.querySelectorAll("a[href*='instagram.com/']").forEach(function(a) {
+    a.href = "https://instagram.com/" + CONFIG.instagram;
+    if (a.textContent.startsWith("@")) a.textContent = "@" + CONFIG.instagram;
+  });
+  // Actualiza número de teléfono visible
+  // Número de teléfono ya está correcto en el HTML
+}
+
 /* ─── INIT ─── */
 refreshCart();
 observeReveals();
 openProductFromHash();
+initWALinks();
 </script>
 </body>
 </html>
