@@ -1603,11 +1603,7 @@ function initWALinks() {
     if (a.textContent.startsWith("@")) a.textContent = "@" + CONFIG.instagram;
   });
   // Actualiza número de teléfono visible
-  const cNum = document.querySelector(".c-num");
-  if (cNum) {
-    const wa = CONFIG.whatsapp;
-    cNum.textContent = "+" + wa.slice(0,2) + " " + wa.slice(2,3) + " " + wa.slice(3,5) + " " + wa.slice(5,9) + "-" + wa.slice(9,13);
-  }
+  // Número de teléfono ya está correcto en el HTML
 }
 
 /* ─── INIT ─── */
